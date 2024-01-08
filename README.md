@@ -5,7 +5,9 @@
 Trabalho para a disciplina de Stream Processing Pipelines
 
 Objetivo: Construir um stream pipeline utilizando uma ferramenta ou plataforma.
+
 Realizar a ingestão dos dados e o output dele em outro formato (Ex: JSON -> Parquet)
+
 Dataset: livre
 
 Tecnologia escolhida: Apache Spark Streaming
