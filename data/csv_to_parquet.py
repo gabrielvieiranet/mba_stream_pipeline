@@ -20,10 +20,12 @@ def main():
 
     print("Quantidade de registros antes do filtro:", df.count())
 
-    # Filtra as receitas com 5 ou mais passos (n_steps) e com 'submitted' não nulo
+    # Filtra as receitas com 5 ou mais passos (n_steps) e com data de envio
     df_filtered = df \
         .filter(col("n_steps") >= 5) \
         .filter(col("submitted").isNotNull())
+
+    print("Quantidade de registros depois do filtro:", df.count())
 
     # Aplica a função Window com base no tempo
     df_with_window = apply_rows_based_window_function(df_filtered)
@@ -33,9 +35,9 @@ def main():
                           "recipes_count").show()
 
     # Define o caminho de saída para o arquivo Parquet no container
-    parquet_output_path = "/opt/bitnami/spark/data/output/PP_recipes_with_window"
+    parquet_output_path = "/opt/bitnami/spark/data/output/PP_recipes_output"
 
-    # Escreve os dados no formato Parquet, sobrescrevendo se o caminho já existir
+    # Escreve os dados no formato Parquet
     df_with_window.write.mode('overwrite').parquet(parquet_output_path)
 
     # Encerra a sessão Spark
