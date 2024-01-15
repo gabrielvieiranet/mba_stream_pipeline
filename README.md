@@ -14,19 +14,16 @@ Tecnologia escolhida: Apache Spark Streaming
 
 ## Instruções
 
-Baixe o dataset neste link:
-
-https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions
-
-Descompactar os arquivos dentro do diretorio data/dataset
-
-Instalar o Docker no ambiente e rodar o comando abaixo para subir o Spark local:
+Instalar o Docker no ambiente e rodar o comando abaixo:
 
 ```
 docker compose up -d
 ```
-Depois para inicializar o script Python, rode este script Shell:
+
+Pode ser que demore um pouco para o producer kafka conectar. Cheque o log do container com o comando ```docker logs CONTAINER_ID```
+
+Depois rode este script Shell para iniciar o streaming pelo Spark:
 
 ```
-./run_csv_to_parquet.sh
+./run.sh
 ```
